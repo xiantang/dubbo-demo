@@ -13,6 +13,8 @@
         <dubbo:parameter key="qos.port" value="33333" />
     </dubbo:application>
 
+    <dubbo:protocol name="dubbo" serialization="fastjson" />
+
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
     <dubbo:registry address="zookeeper://127.0.0.1:2181" />
 

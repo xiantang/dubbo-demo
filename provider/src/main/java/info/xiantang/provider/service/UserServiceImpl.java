@@ -2,12 +2,15 @@ package info.xiantang.provider.service;
 
 import info.xiantang.api.bean.User;
 import info.xiantang.api.service.UserService;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 
-@Service
+@Service(dynamic = true)
 public class UserServiceImpl implements UserService {
     public List<User> getUserById(int userId) {
         User xiantang = new User(1, "xiantang");
@@ -20,11 +23,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void add(List<User> list) {
-        list.forEach((Object user) -> {
-            System.out.println(user);
-            // fastjson's JSONObject, Not User type
-            System.out.println(user.getClass());
-        });
+    public void add(Map<Integer, User> list) {
+        for (Map.Entry<Integer, User> next : list.entrySet()) {
+            User value = next.getValue();
+            System.out.println(value);
+
+        }
     }
+
+
 }
