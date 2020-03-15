@@ -18,4 +18,13 @@ public class UserServiceImpl implements UserService {
         return users;
 
     }
+
+    @Override
+    public void add(List<User> list) {
+        list.forEach((Object user) -> {
+            System.out.println(user);
+            // fastjson's JSONObject, Not User type
+            System.out.println(user.getClass());
+        });
+    }
 }
